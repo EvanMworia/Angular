@@ -1,0 +1,21 @@
+<div class="content">
+  <label for="Name">Name</label>
+  <input type="text" [(ngModel)]="Name" />
+
+  <label for="Age">Age</label>
+  <input type="number" [(ngModel)]="Age" />
+
+  <button (click)="addPerson()">Add</button>
+</div>
+
+<div *ngIf="listOfPeople.length > 0; else emptyList">
+  <h1>List of people</h1>
+  <div *ngFor="let person of listOfPeople; let i = index">
+    <p>{{ person.Name }} is {{ person.Age }} Years Old</p>
+    <button (click)="deletePerson(i)">Delete</button>
+  </div>
+</div>
+
+<ng-template #emptyList>
+  <i>List is currently empty, add new people</i>
+</ng-template>

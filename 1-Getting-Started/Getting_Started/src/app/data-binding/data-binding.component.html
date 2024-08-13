@@ -1,1 +1,34 @@
-<p>data-binding works!</p>
+<div class="card-container">
+  <div class="card-content">
+    <h1>To-Do List</h1>
+    <br />
+    <input type="text" placeholder="To-Do Item..." [(ngModel)]="item" />
+    <input type="date" placeholder="Deadline..." [(ngModel)]="deadline" />
+    <button (click)="addItem()">Add New</button>
+    <div class="list">
+      <h2 *ngIf="listOfItems.length > 0; else emptyList">
+        List Of To-do Items
+      </h2>
+      <table>
+        <thead>
+          <th><h3>Title</h3></th>
+          <th><h3>Deadline</h3></th>
+          <th><h3>Action</h3></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listOfItems">
+            <td>{{ item.item }}</td>
+            <td>{{ item.deadline }}</td>
+
+            <td><button>done</button></td>
+            <td><button>delete</button></td>
+            <!-- <td><button>done</button><button>done</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #emptyList>
+        <p><i>You havent added any to-do's to track</i></p>
+      </ng-template>
+    </div>
+  </div>
+</div>
